@@ -1,7 +1,7 @@
 {
   "name": "sprint12",
   "version": "1.0.0",
-  "description": "спринт 12 изучение основ бэкенда",
+  "description": "спринт 13 изучение основ бэкенда. API REST MongoDB",
   "main": "app.js",
   "scripts": {
     "dev": "nodemon app.js",
@@ -9,12 +9,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/zTironz/sprint12.git"
+    "url": "git+https://github.com/zTironz/sprint13.git"
   },
   "author": "Tiron",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/zTironz/sprint12/issues"
+    "url": "https://github.com/zTironz/sprint13/issues"
   },
   "devDependencies": {
     "eslint": "^7.2.0",
@@ -23,6 +23,8 @@
     "nodemon": "^2.0.4"
   },
   "dependencies": {
-    "express": "^4.17.1"
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.9.20"
   }
 }
