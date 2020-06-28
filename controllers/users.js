@@ -10,7 +10,7 @@ module.exports.getUsers = (req, res) => {
 module.exports.getUser = (req, res) => {
   user
     .findById(req.params.userId)
-    .then((users) => res.send({ data: users }))
+    .then((users) => res.send(users !== null ? { data: users } : res.status(404).send({ data: 'Нет пользователя с таким id' })))
     .catch(() => res.status(500).send({ message: 'Нет пользователя с таким id' }));
 };
 module.exports.createUser = (req, res) => {

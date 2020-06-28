@@ -24,9 +24,9 @@ app.use((req, res, next) => {
 
   next();
 });
-
 app.use('/cards', cardsRoute);
-
 app.use('/users', usersRoute);
-
+app.get('*', (req, res) => {
+  res.status(404).send({ message: 'Запрашиваемый ресурс не найден' });
+});
 app.listen(PORT);
