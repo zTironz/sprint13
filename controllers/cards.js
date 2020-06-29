@@ -3,7 +3,7 @@ const Card = require('../models/card');
 const getCards = (req, res) => {
   Card.find({})
     .then((cards) => res.send({ cards }))
-    .catch((err) => res.status(404).send({ message: err.message }));
+    .catch((err) => res.status(500).send({ message: err.message }));
 };
 
 const createCard = (req, res) => {
@@ -11,7 +11,7 @@ const createCard = (req, res) => {
   const id = req.user._id;
   Card.create({ name, link, owner: id })
     .then((card) => res.send({ data: card }))
-    .catch((err) => res.status(404).send({ message: err.message }));
+    .catch((err) => res.status(500).send({ message: err.message }));
 };
 
 const deleteCard = (req, res) => {
@@ -23,7 +23,7 @@ const deleteCard = (req, res) => {
         res.send({ card });
       }
     })
-    .catch((err) => res.status(404).send({ message: err.message }));
+    .catch((err) => res.status(500).send({ message: err.message }));
 };
 
 module.exports = {

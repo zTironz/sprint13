@@ -4,7 +4,7 @@ module.exports.getUsers = (req, res) => {
   User
     .find({})
     .then((users) => res.send({ users }))
-    .catch((err) => res.status(404).send({ message: err.massage }));
+    .catch((err) => res.status(500).send({ message: err.massage }));
 };
 
 module.exports.getUser = (req, res) => {
@@ -24,5 +24,5 @@ module.exports.createUser = (req, res) => {
   User
     .create({ name, about, avatar })
     .then((users) => res.send({ users }))
-    .catch((err) => res.status(404).send({ message: err.massage }));
+    .catch((err) => res.status(500).send({ message: err.massage }));
 };
