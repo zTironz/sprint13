@@ -1,22 +1,28 @@
-const user = require('../models/user');
+const User = require('../models/user');
 
 module.exports.getUsers = (req, res) => {
-  user
+  User
     .find({})
-    .then((users) => res.send({ data: users }))
-    .catch(() => res.status(500).send({ message: 'Что-то пошло не так' }));
+    .then((users) => res.send({ users }))
+    .catch((err) => res.status(404).send({ message: err.massage }));
 };
 
 module.exports.getUser = (req, res) => {
-  user
+  User
     .findById(req.params.userId)
-    .then((users) => res.send(users !== null ? { data: users } : res.status(404).send({ data: 'Нет пользователя с таким id' })))
+    .then((user) => {
+      if (!user) {
+        res.status(404).send({ message: 'Такого пользователя нет' });
+      } else {
+        res.send({ user });
+      }
+    })
     .catch(() => res.status(500).send({ message: 'Нет пользователя с таким id' }));
 };
 module.exports.createUser = (req, res) => {
   const { name, about, avatar } = req.body;
-  user
+  User
     .create({ name, about, avatar })
-    .then((users) => res.send({ data: users }))
-    .catch((err) => res.status(500).send({ message: err }));
+    .then((users) => res.send({ users }))
+    .catch((err) => res.status(404).send({ message: err.massage }));
 };
